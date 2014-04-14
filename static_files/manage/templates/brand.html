@@ -1,0 +1,31 @@
+## Mako can find this base file because it's in the settings.py -> MAKO_TEMPLATES_DIRS list
+<%inherit file="base.htm" />
+
+
+<%block name="content">
+
+
+<h1> Brands</h1>
+<div class="pull-right">
+	<a class="btn btn-success" href="/manage/edit_brand__new/">Create New Brand</a>
+</div>	
+
+<table class="table table-striped">
+  <thead>
+		<tr>
+		 <th>ID</th>
+		 <th>Brand Name</th>
+	 </tr>
+	</thead>
+	<tbody>
+		%for b in brand:
+		<tr>
+			<td>${ b.id}</td>
+			<td>${ b.brand_name}</td>
+			<td><a href="/manage/edit_brand/${ b.id}/">Edit</a>
+		</tr>
+		%endfor
+	</tbody>
+</table>	  
+
+</%block>  

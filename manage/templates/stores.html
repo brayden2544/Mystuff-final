@@ -1,0 +1,46 @@
+## Mako can find this base file because it's in the settings.py -> MAKO_TEMPLATES_DIRS list
+<%inherit file="base.htm" />
+
+
+<%block name="content">
+
+
+<h1> All Stores</h1>
+<div class="pull-right">
+	<a class="btn btn-success" href="/manage/edit_stores__new/">Create New Store</a>
+</div>	
+
+<table class="table table-striped">
+  <thead>
+		<tr>
+		 <th>ID</th>
+		 <th>Store Number</th>
+		 <th>Location</th>
+		 <th>Street</th>
+		 <th>City</th>
+		 <th>State</th>
+		 <th>Zip</th>
+		 <th>Phone</th>
+		 <th>Hours</th>
+		 <th>Actions</th>
+	 </tr>
+	</thead>
+	<tbody>
+		%for s in stores:
+		<tr>
+			<td>${ s.id}</td>
+			<td>${ s.store_number}</td>
+			<td>${ s.location_name}</td>
+		  <td>${ s.street}</td>
+			<td>${ s.city}</td>
+			<td>${ s.state}</td>
+			<td>${ s.zip_code}</td>
+			<td>${ s.phone}</td>
+			<td>${ s.hours}</td>
+			<td><a href="/manage/edit_stores/${ s.id }/">Edit</a><a href="/manage/edit_stores__deactivate/${ s.id }/"> Delete</a></td>		
+		</tr>
+		%endfor
+	</tbody>
+</table>	  
+
+</%block>  

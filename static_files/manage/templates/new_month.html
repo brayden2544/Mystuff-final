@@ -1,0 +1,14 @@
+## Mako can find this base file because it's in the settings.py -> MAKO_TEMPLATES_DIRS list
+<%inherit file="base.htm" />
+
+
+<%block name="content">
+
+
+<h1> Setup Accounts for New Month</h1><br>
+<u><h2>Summary</h2></u>
+<h3> New Accounts will be created for ${ month} ${ year}</h3>
+<a class="btn btn-success" href="/manage/new_month__create/">Create Accounts for ${ month} ${ year}</a>
+  
+
+</%block>  

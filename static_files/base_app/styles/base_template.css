@@ -1,0 +1,141 @@
+/* 
+  Static CSS for the base.html page goes here.  Since base.html is the common ancestor of all templates of all apps on our site,
+  CSS included here will be placed on *every* page of the site.
+*/
+
+/*
+Colors used for swatch
+Red: #b91f09
+Grey: #878787
+Text Grey: #5C5C5C
+Black: #000000
+White: #FFFFFF
+green: #078a29;
+
+
+Box shadow
+	-webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
+	box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
+
+*/
+
+/* DIVS for the site */
+html, body {
+	color:#5C5C5C;
+	background:url('/static/base_app/images/lane_light.png');
+
+}
+
+h1{
+	color:#b91f09;
+}
+
+.table > thead > tr > th {
+color: #b91f09;
+}
+
+}
+
+#container{
+	height: auto;
+}
+
+#top_container{
+  background:#FFFFFF;
+}
+
+#center_container{
+	
+	
+}
+
+#bottom_container{
+	display: block;
+	z-index: 5;
+	background-color: #b91f09;
+	border-bottom: 1px solid #336699;
+	-webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
+	box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
+	padding-top: 9px;
+	border-bottom: 1px solid #fff;
+}
+
+#head_container{
+	
+}
+
+#header{
+  background-color:#000000;
+	padding-bottom: 11px;
+}
+
+#header-left{
+	background-color:#000000;
+	min-height: 103px;
+}
+
+#login{
+  background-color:#000000;
+	padding-bottom: 12px;
+}
+
+#nav_container{
+	
+}
+
+#navigation{
+		
+}
+
+
+
+#nav_left{
+	display: block;
+	z-index: 5;
+	background-color: #b91f09;
+	padding-top: 52px;
+	-webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
+	box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
+}
+
+#nav_right{
+	display: block;
+	z-index: 5;
+	background-color: #b91f09;
+	padding-top: 9px;
+	padding-left:257px;
+	-webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
+	box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
+	border-top: 2px solid #FFFFFF;
+}
+
+#main_container{
+	
+}
+
+#you_are_here{
+	
+}
+
+#center{
+	padding-top: 10px;
+}
+
+#center_body{
+	border-radius: 4px;
+	min-height:600px;
+	background-color: #FFFFFF;
+}
+
+#footer_container{
+	min-height: 140px;
+	
+}
+
+#shopbybrand{
+	border-bottom: 1px solid #000000;
+}

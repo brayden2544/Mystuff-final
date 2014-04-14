@@ -1,0 +1,21 @@
+## Mako can find this base file because it's in the settings.py -> MAKO_TEMPLATES_DIRS list
+<%inherit file="base.htm" />
+
+
+<%block name="content">
+
+
+<u><h1>Administration Options</h1></u>
+<div class="pull-left">
+	<h3>Setup Options</h3>
+	<a class="btn btn-default" href="/manage/Setup_Default_Store/">Setup Default Store</a>
+	<a class="btn btn-danger" href="/manage/Remove_All/">Delete All From Database</a><br>
+
+	<br>
+	<h3>Monthly Setup</h3>
+	<a class="btn btn-default" href="/manage/new_month/">Setup Accounts for New Month</a><br>
+</div>	
+
+  
+
+</%block>  

@@ -1,0 +1,28 @@
+<%inherit file="base_template.htm" />
+
+<%block name="left">
+    <%!
+        from manage import models as mmod
+    %>
+    <div class="panel-group" id="accordion">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion"><a href="/catalog/categories/">
+              <span class="glyphicon glyphicon-shopping-cart"></span> &nbsp Products
+            </a>
+          </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse in">
+          <div class="panel-body">
+           %for value in mmod.Category.objects.all():
+            <a href="/catalog/category/${ value.id}/"><button type="button" class="btn btn-default btn-block">${ value}</button></a>
+           %endfor
+          </div>
+        </div>
+      </div></br>
+      
+            <button type="button" id="search_button" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-search"></span> Product Search</button>
+      </div>   
+</%block>
+

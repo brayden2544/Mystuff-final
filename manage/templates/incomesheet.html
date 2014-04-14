@@ -1,0 +1,43 @@
+## Mako can find this base file because it's in the settings.py -> MAKO_TEMPLATES_DIRS list
+<%inherit file="base.htm" />
+
+
+<%block name="content">
+
+
+<h1> Income Statement for ${ month} ${ year} </h1>
+
+<div class="row">
+  <div class="col-md-10">
+		<table class="table table-striped">
+		  <thead>
+				<tr>
+				 <th>Account</th>
+				 <th>Balance</th>
+				 <th>Month</th>
+			 </tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Revenue</td>
+					<td>$${ revenue.balance}</td>
+					<td>${ revenue.account_name}</td>
+				</tr>
+				<tr>
+					<td>ComissionsExpense</td>
+					<td>$${ ComissionsExpense.balance}</td>
+					<td>${ ComissionsExpense.account_name}</td>
+				</tr>
+				<tr>
+					<td>Sales Tax Payable</td>
+					<td>$${ SalesTaxPayable.balance}</td>
+					<td>${ SalesTaxPayable.account_name}</td>
+				</tr>
+			</tbody>
+		</table>
+  </div>
+  <div class="col-md-2"></div>
+</div>
+	  
+
+</%block>  

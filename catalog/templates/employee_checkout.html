@@ -1,0 +1,19 @@
+## Mako can find this base file because it's in the settings.py -> MAKO_TEMPLATES_DIRS list
+<%inherit file="base.htm" />
+
+<%block name="content">
+<div class="row" style="text-align:center">
+    <h3>Checkout</h3>
+
+    <form method="POST">
+        <table>
+            <tbody>
+                ${ form}
+            </tbody>
+        </table>
+        <input class="btn btn-success" type="submit" value="Checkout" />
+    </form>
+</div>
+
+
+</%block>

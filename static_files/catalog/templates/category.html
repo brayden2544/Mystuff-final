@@ -1,0 +1,31 @@
+## Mako can find this base file because it's in the settings.py -> MAKO_TEMPLATES_DIRS list
+<%inherit file="base.htm" />
+
+
+<%block name="content">
+<div class="row">
+  <a class="btn btn-default" href="/catalog/categories/"><span class="glyphicon glyphicon-chevron-left"></span> Back To Categories</a>
+</div>
+<h1> ${ category.category_name}</h1>
+<p>___________________________________________________________________________________________________________________________</p>
+<div id="category_list_page">
+	%for product in products:
+		<div class="row">
+		  <div class="col-md-2">
+				<a href="/catalog/product/${ product.sku}/"><img src="/static/catalog/images/product/thumb/${ product.sku}-thumb.jpg" alt="${ category.category_name}" class="img-thumbnail"></a>
+			</div>
+		  <div class="col-md-8">
+				<a href="/catalog/product/${ product.sku}"><h3>${ product.product_name}</h3></a></br>
+				<strong>SKU: ${ product.sku} </br> Brand: ${ product.brand}</strong>
+			</div>
+		  <div class="col-md-2">
+				<h3>$${ product.price}</h3>
+		  	<a class="btn btn-primary" href="/catalog/product/${ product.sku}">View Product Details</a>
+				<a class="btn btn-success" href="/catalog/product__add_to_cart/${ product.id}"><span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart</a>
+				
+		  </div>
+		</div>
+		<p>___________________________________________________________________________________________________________________________</p>
+	%endfor
+</div>
+</%block>  

@@ -1,0 +1,177 @@
+## this is the skeleton of all pages on our site - it defines the basic structure with our menus, sidebars, etc.
+## by naming this file with .htm, it can't be viewed directly (urls.py only allows full .html)
+
+## set up a StaticRenderer object to enable the CSS/JS automatic inclusion magic.
+<%! from base_app import static_files %>
+<%  static_renderer = static_files.StaticRenderer(self) %>
+<% cart = request.session.get('cart', {}) %>
+<% rental_cart = request.session.get('rental_cart', {}) %>
+<% repair_cart = request.session.get('repair_cart', {}) %>
+<% user = request.user%>
+<% cart_items = len(cart) + len(rental_cart) + len(repair_cart)%>
+<% from manage import models as mmod %>
+<% categories = mmod.Category.objects.all() %>
+
+<!DOCTYPE html>
+<html>
+  <meta charset="UTF-8">
+  <head>
+    <title>My Stuff</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="/static/base_app/styles/bootstrap.css"/>
+    <script src="/static/base_app/scripts/bootstrap.js"></script>
+    <script src="/static/base_app/scripts/jquery.form.js"></script>
+    <script src="/static/base_app/scripts/jquery.loadmodal.js"></script>
+  
+    ## render the css
+    ${ static_renderer.get_template_css(request, context)  }
+	
+  
+  </head>
+  <body>
+      <div id="top_container">
+        <div id="head_container">
+        <div id="header-left" class="col-md-1"></div>
+          <div id="header" class="col-md-7">
+            <img src="/static/base_app/images/mystuffbyu.png">
+          </div>
+          <div id="login" class="col-md-4">
+            %if request.user.is_authenticated():
+              %if request.user.is_superuser:
+                <a href="/manage/"><button type="button" class="btn btn-default"><span class="glyphicon glyphicon-cog"></span> Manage</button></a>
+              %endif
+              %if request.user.is_staff:
+                <a href="/catalog/employee_checkout/"><button type="button" class="btn btn-default"><span class="glyphicon glyphicon-shopping-cart"></span> Employee Checkout</button></a><br />
+                <h5 class="pull-right">Welcome ${ user.username}</h5>
+              %endif
+            %else:
+         <li><button id="login_button" class="btn btn-success"><span class="glyphicon glyphicon-lock"></span> Login</button></li>     
+			  <h5 class="pull-right">Welcome Guest</h5>
+            %endif
+          </div>
+        </div>
+      </div>
+      <div id="nav_container">
+        <div id="navigation">
+            <div id="nav_right" class="col-md-12">
+              <nav id="navbar-example" class="navbar navbar-default navbar-static" role="navigation">
+                    <div class="container-fluid">
+  
+                      <div class="collapse navbar-collapse bs-example-js-navbar-collapse">
+                        <ul class="nav navbar-nav">
+                          <li>
+                              <a href="/" id="drop3" role="button" class="btn btn-defult"><span class="glyphicon glyphicon-home"></span> Home</a>
+                          </li>  
+                          <li class="dropdown">
+                            <a id="drop1" href="/catalog/categories/" role="button" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-tag"> Products <b class="caret"></b></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+                              <li role="presentation"><a role="menuitem" tabindex="-1" href="/catalog/category/1/">Cameras</a></li>
+                              <li role="presentation"><a role="menuitem" tabindex="-1" href="/catalog/category/2/">Accessories</a></li>
+                              <li role="presentation"><a role="menuitem" tabindex="-1" href="/catalog/category/3/">Printers</a></li>
+                              <li role="presentation"><a role="menuitem" tabindex="-1" href="/catalog/category/4/">Storage</a></li>
+                            </ul>
+                          </li>
+                          <!--
+                          <li class="dropdown">
+                            <a href="#" id="drop2" role="button" class="dropdown-toggle" data-toggle="dropdown">Dropdown 2 <b class="caret"></b></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="drop2">
+                              <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Action</a></li>
+                              <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Another action</a></li>
+                              <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Something else here</a></li>
+                              <li role="presentation" class="divider"></li>
+                              <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Separated link</a></li>
+                            </ul>
+                          </li>
+                          -->
+                          <li>
+                              <a href="/catalog/rentable/" id="drop3" role="button" class="btn btn-defult"><span class="glyphicon glyphicon-time"></span> Rentable Products</a>
+                          </li>  
+                          <li>
+                              <a href="/catalog/cart/" id="drop3" role="button" class="btn btn-defult"><span class="glyphicon glyphicon-globe"></span> About Us</a>
+                          </li>
+                          <li>
+                              <a href="/catalog/cart/" id="drop3" role="button" class="btn btn-defult"><span class="glyphicon glyphicon-earphone"></span> Contact Us</a>
+                          </li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+
+                          <li id="fat-menu" class="dropdown">
+                            <a href="/catalog/cart/" id="drop3" role="button" class="btn btn-defult"><span class="glyphicon glyphicon-shopping-cart"></span> Cart &nbsp<span class="badge">${ cart_items}</span></a>
+                          </li>
+                        </ul>
+                        %if request.user.is_authenticated():
+                          <ul class="nav navbar-nav navbar-right">
+                            <li id="fat-menu" class="dropdown">
+                              <a href="/account/my_account/" id="drop3" role="button" class="btn btn-defult" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> My Account <b class="caret"></b></a>
+                              <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="/account/my_account/">View My Account</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="/account/edit_my_account/${ request.user.id}">Edit Account</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="/account/edit_my_password/">Change Password</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="/catalog/view_repairs/">View Repair Status</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="/account/edit_my_account__deactivate/">Delete Account</a></li>
+                                <li role="presentation" class="divider"></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="/account/login__logout/">Log Out</a></li>
+                              </ul>
+                            </li>
+                          </ul>
+                        %endif
+                      </div><!-- /.nav-collapse -->
+                    </div><!-- /.container-fluid -->
+                  </nav>
+            </div>
+        </div>
+      </div>
+      <div id="center_container" class="col-md-12">
+        <div id="main_container" class="col-md-12">
+          <div id="you_are_here" class="col-md-12"></div>
+          <div id="center">
+            ## Main Left
+            <div class="col-md-2">
+              <%block name="left">
+                 
+              </%block>
+            </div>
+            ## Main Center
+            <div id="center_body" class="col-md-10">
+              <%block name="content">
+                Site content goes here in sub-templates.
+              </%block>
+            </div>
+            ## Main Right
+          </div>
+        </div>
+      </div>
+	  </div>
+  </div>
+      <div id="bottom_container" class="col-md-12">
+        <div id="footer_container" class="col-md-12">
+         <div class="row">
+            <div class="col-md-3"> <img class="img-thumbnail" src="/static/base_app/images/mystuffmobilesmall2.png"></div>
+            <div class="col-md-3">
+                <img class="img-thumbnail" src="/static/base_app/images/ssl.png">
+
+            </div>
+            <div class="col-md-3">
+                <h6><u>Information</u></h6>
+            </div>
+            <div class="col-md-3">
+                <h6>(801) 422-4222</h6>
+                <h6>Sales@Byuisys.com</h6><br />
+                <h6>Open Mon-Sat 9-5</h6>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    ##Tracking Code
+<script src="//static.getclicky.com/js" type="text/javascript"></script>
+<script type="text/javascript">try{ clicky.init(100726293); }catch(e){}</script>
+<noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100726293ns.gif" /></p></noscript>
+
+    ## render the JS for this page (placed here at the end because browsers apparently load faster when JS is at the end)
+
+    ${ static_renderer.get_template_js(request, context)  }
+  
+  </body>
+</html>

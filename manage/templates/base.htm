@@ -1,0 +1,164 @@
+<%inherit file="base_template.htm" />
+
+<%block name="left">
+    <div class="panel-group" id="accordion">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+              <span class="glyphicon glyphicon-th-list"></span> &nbsp Stores 
+            </a>
+          </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse">
+          <div class="panel-body">
+            <a href="/manage/stores/"><button type="button" class="btn btn-default btn-block">View All Stores</button></a>
+    				<a href="/manage/edit_stores__new/"><button type="button" class="btn btn-default btn-block">Create New Store</button></a>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+              <span class="glyphicon glyphicon-tags"></span> &nbsp Categories
+            </a>
+          </h4>
+        </div>
+        <div id="collapseTwo" class="panel-collapse collapse">
+          <div class="panel-body">
+            <a href="/manage/category/"><button type="button" class="btn btn-default btn-block">View All Categories</button></a>
+    				<a href="/manage/edit_category__new/"><button type="button" class="btn btn-default btn-block">Add New Category</button></a>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+              <span class="glyphicon glyphicon-certificate"></span> &nbsp Brands
+            </a>
+          </h4>
+        </div>
+        <div id="collapseThree" class="panel-collapse collapse">
+          <div class="panel-body">
+            <a href="/manage/brand/"><button type="button" class="btn btn-default btn-block">View All Brands</button></a>
+    				<a href="/manage/edit_brand__new/"><button type="button" class="btn btn-default btn-block">Add New Brand</button></a>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+              <span class="glyphicon glyphicon-tag"></span> &nbsp Products
+            </a>
+          </h4>
+        </div>
+        <div id="collapseFour" class="panel-collapse collapse">
+          <div class="panel-body">
+            <a href="/manage/catalog_items/"><button type="button" class="btn btn-default btn-block">View All Catalog Items</button></a>
+    				<a href="/manage/edit_catalog_items__new/"><button type="button" class="btn btn-default btn-block">Add New Catalog Item</button></a>
+    				<a href="/manage/serial_inventory/"><button type="button" class="btn btn-default btn-block">View Serial Inventory</button></a>
+    				<a href="/manage/edit_serial_inventory__new/"><button type="button" class="btn btn-default btn-block">Add Serial Item</button></a>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
+              <span class="glyphicon glyphicon-list-alt"></span> &nbsp Inventory 
+            </a>
+          </h4>
+        </div>
+          <div id="collapseFive" class="panel-collapse collapse">
+            <div class="panel-body">
+              <a href="/manage/inventory/"><button type="button" class="btn btn-default btn-block">View Inventory</button></a>
+      				<a href="/manage/add_inventory/"><button type="button" class="btn btn-default btn-block">Add Inventory by SKU</button></a>
+            </div>
+          </div>
+       </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseSix">
+              <span class="glyphicon glyphicon-time"></span> &nbsp Rentals 
+            </a>
+          </h4>
+        </div>
+          <div id="collapseSix" class="panel-collapse collapse">
+            <div class="panel-body">
+              <a href="/manage/rental/"><button type="button" class="btn btn-default btn-block">Current Rentals</button></a>
+      				<a href="/manage/overdue_rental/"><button type="button" class="btn btn-default btn-block">Overdue Rentals</button></a>
+            </div>
+          </div>
+       </div>
+       <div class="panel panel-default">
+         <div class="panel-heading">
+           <h4 class="panel-title">
+             <a data-toggle="collapse" data-parent="#accordion" href="#collapseSeven">
+               <span class="glyphicon glyphicon-wrench"></span> &nbsp Repairs
+             </a>
+           </h4>
+         </div>
+           <div id="collapseSeven" class="panel-collapse collapse">
+             <div class="panel-body">
+               <a href="/manage/create_repair/"><button type="button" class="btn btn-default btn-block">Check In New Repair</button></a>
+               <a href="/manage/repairs/"><button type="button" class="btn btn-default btn-block">View Current Repairs</button></a>
+       				 <a href="/manage/rental/"><button type="button" class="btn btn-default btn-block">Change Repair Status</button></a>
+             </div>
+           </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapseEight">
+                <span class="glyphicon glyphicon-user"></span> &nbsp Users 
+              </a>
+            </h4>
+          </div>
+        <div id="collapseEight" class="panel-collapse collapse">
+          <div class="panel-body">
+            <a href="/account/users/"><button type="button" class="btn btn-default btn-block">View All Users</button></a>
+            <a href="/account/edit_user__new/"><button type="button" class="btn btn-default btn-block">Create New User</button></a>
+            <a href="/account/new_employee_signup/"><button type="button" class="btn btn-default btn-block">Create New Employee</button></a>
+            <a href="/account/users__staff/"><button type="button" class="btn btn-default btn-block">View All Employees</button></a>  
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseNine">
+              <span class="glyphicon glyphicon-book"></span> &nbsp Accounting 
+            </a>
+          </h4>
+        </div>
+        <div id="collapseNine" class="panel-collapse collapse">
+          <div class="panel-body">
+            <a href="/manage/balancesheet/"><button type="button" class="btn btn-default btn-block"> Balance Sheet</button></a>
+            <a href="/manage/incomesheet/"><button type="button" class="btn btn-default btn-block"> Income Statement</button></a>
+            <a href="/manage/comissions/"><button type="button" class="btn btn-default btn-block"> Comissions Report</button></a>
+            <a href="/manage/transactions/"><button type="button" class="btn btn-default btn-block"> Monthly Transactions</button></a>
+            <a href="/manage/employee_transactions/"><button type="button" class="btn btn-default btn-block"> Employee Transactions</button></a>  
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTen">
+              <span class="glyphicon glyphicon-off"></span> &nbsp Administration 
+            </a>
+          </h4>
+        </div>
+        <div id="collapseTen" class="panel-collapse collapse">
+          <div class="panel-body">
+            <a href="/manage/administration/"><button type="button" class="btn btn-default btn-block">Administration Options</button></a>
+          </div>
+        </div>
+      </div>
+  </div>
+</%block>
+

@@ -1,0 +1,84 @@
+## Mako can find this base file because it's in the settings.py -> MAKO_TEMPLATES_DIRS list
+<%inherit file="base.htm" />
+<%import datetime%>
+
+<%block name="content">
+
+
+<h1> Overdue Rentals Report</h1>
+<div class="pull-right">
+	<a class="btn btn-success" href="/manage/email_overdue_rentals/">Email All Overdue Rentals</a>
+</div>
+	
+<h2>Rentals 30 Days Overdue</h2>
+<table class="table table-striped">
+  <thead>
+		<tr>
+		 <th>Rental ID</th>
+		 <th>Product SKU</th>
+		 <th>Customer</th>
+		 <th>Date Out</th>
+		 <th>Return Date</th>
+	 </tr>
+	</thead>
+	<tbody>
+		%for t in thirty:
+		<tr>
+			<td>${ t.id}</td>
+			<td>${ t.rental_item.sku}</td>
+			<td>${ t.customer.username}</td>
+			<td>${ t.date_out}</td>
+			<td>${ t.expected_return}</td>
+		</tr>
+		%endfor
+</table>
+
+<h2>Rentals 60 Days Overdue</h2>	
+<table class="table table-striped">	
+	  <thead>
+			<tr>
+			 <th>Rental ID</th>
+			 <th>Product SKU</th>
+			 <th>Customer</th>
+			 <th>Date Out</th>
+			 <th>Return Date</th>
+		 </tr>
+		</thead>
+		<tbody>
+		%for s in sixty:
+			
+		<tr>
+			<td>${ s.id}</td>
+			<td>${ s.rental_item.sku}</td>
+			<td>${ s.customer.username}</td>
+			<td>${ s.date_out}</td>
+			<td>${ s.expected_return}</td>
+		</tr>
+		%endfor
+</table>
+
+<h2>Rentals 90 Days Overdue</h2>
+<table class="table table-striped">		
+	  <thead>
+			<tr>
+			 <th>Rental ID</th>
+			 <th>Product SKU</th>
+			 <th>Customer</th>
+			 <th>Date Out</th>
+			 <th>Return Date</th>
+		 </tr>
+		</thead>
+		<tbody>
+		%for n in ninety:
+		<tr>
+			<td>${ n.id}</td>
+			<td>${ n.rental_item.sku}</td>
+			<td>${ n.customer.username}</td>
+			<td>${ n.date_out}</td>
+			<td>${ n.expected_return}</td>
+		</tr>
+		%endfor
+	</tbody>
+</table>	  
+
+</%block>  

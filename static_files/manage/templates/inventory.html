@@ -1,0 +1,44 @@
+## Mako can find this base file because it's in the settings.py -> MAKO_TEMPLATES_DIRS list
+<%inherit file="base.htm" />
+
+
+<%block name="content">
+
+
+<h1> Current Inventory</h1>
+
+
+<table class="table table-striped">
+  <thead>
+		<tr>
+		 <th>ID</th>
+		 <th>SKU</th>
+		 <th>Availability</th>
+		 <th>Stock Count</th>
+		 <th>Catagory</th>
+		 <th>Brand</th>
+		 <th>Price</th>
+		 <th>Actions</th>
+	 </tr>
+	</thead>
+	<tbody>
+		%for i in inventory:
+		<tr>
+			<td>${ i.id}</td>
+			<td>${ i.sku}</td>
+			%if i.availability == 1:
+				<td>In Stock</td>
+			%else:
+				<td>Out Of Stock</td>
+			%endif
+			<td>${ i.product_count}
+		  <td>${ i.category}</td>
+			<td>${ i.brand}</td>
+			<td>${ i.price}</td>
+		  <td><a href="/manage/add_inventory/${ i.sku}/">Add Inventory</a></td> 
+		</tr>
+		%endfor
+	</tbody>
+</table>	  
+
+</%block>  

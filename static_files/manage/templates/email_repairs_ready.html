@@ -1,0 +1,19 @@
+## Mako can find this base file because it's in the settings.py -> MAKO_TEMPLATES_DIRS list
+<%inherit file="base.htm" />
+<%import datetime%>
+
+<%block name="content">
+
+<h2>All customers who have completed Repairs have been Emailed</h2>
+
+<h3>List of Customers who have been emailed for their completed repairs</h3>
+%for r in repairs:
+	<p>${ r.customer.username} emailed at ${ r.customer.email}</p>
+%endfor
+
+<div class="pull-left">
+	<a class="btn btn-success" href="/manage/repairs/">Back to Repairs</a>
+</div>
+
+
+</%block>  

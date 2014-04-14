@@ -1,0 +1,53 @@
+## Mako can find this base file because it's in the settings.py -> MAKO_TEMPLATES_DIRS list
+<%inherit file="base_template.htm" />
+
+
+<%block name="content">
+
+
+<h1> ${ title}</h1>
+<div class="pull-right">
+	<a class="btn btn-success" href="/account/edit_employee__new/">Create New Employee</a>
+</div>	
+
+<table class="table table-striped">
+  <thead>
+		<tr>
+		 <th>ID</th>
+		 <th>Username</th>
+		 <th>First Name</th>
+		 <th>Last Name</th>
+		 <th>Email</th>
+		 <th>Address</th>
+		 <th>City</th>
+		 <th>State</th>
+		 <th>Zip</th>
+		 <th>Hire Date</th>
+		 <th>Terminated</th>
+		 <th>Salary<th>
+		 <th>Actions</th>
+	 </tr>
+	</thead>
+	<tbody>
+		%for s in staff:
+		<tr>
+			<td>${ s.id}</td> 
+			<td>${ s.username}</td>
+			<td>${ s.first_name}</td>
+		  <td>${ s.last_name}</td>
+			<td>${ s.email}</td>
+			<td>${ s.address}</td>
+			<td>${ s.city}</td>
+			<td>${ s.state}</td>
+			<td>${ s.zip_code}</td>
+			<td>${ s.hire_date}<td>
+			<td>${ s.is_terminated}<td>
+			<td>${ s.salary}<td>
+			<td><a href="/account/edit_employee/${ s.id }/">Edit</a><a href="/account/edit_employee__deactivate/${ s.id }/"> Delete</a></td>
+		</tr>
+		%endfor
+	</tbody>
+</table>	  
+
+</%block>  
+

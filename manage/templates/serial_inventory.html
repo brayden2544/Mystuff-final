@@ -1,0 +1,52 @@
+## Mako can find this base file because it's in the settings.py -> MAKO_TEMPLATES_DIRS list
+<%inherit file="base.htm" />
+
+
+<%block name="content">
+
+
+<h1> All Inventory</h1>
+<div class="pull-right">
+	<a class="btn btn-success" href="/manage/edit_serial_inventory__new/">Add New Serial Inventory</a>
+</div>	
+
+<table class="table table-striped">
+  <thead>
+		<tr>
+		 <th>ID</th>
+		 <th>SKU</th>
+		 <th>Availability</th>
+		 <th>Catagory</th>
+		 <th>Brand</th>
+		 <th>Description</th>
+		 <th>Price</th>
+		 <th>Serial</th>
+		 <th>Store Location</th>
+		 <th>Shelf Location</th>
+		 <th>Date Purchased</th>
+		 <th>Comission Rate</th>
+		 <th>Actions</th>
+	 </tr>
+	</thead>
+	<tbody>
+		%for i in inventory:
+		<tr>
+			<td>${ i.id}</td>
+			<td>${ i.sku}</td>
+			<td>${ i.availability}</td>
+		  <td>${ i.category}</td>
+			<td>${ i.brand}</td>
+			<td>${ i.description}</td>
+			<td>${ i.price}</td>
+			<td>${ i.serial}</td>
+			<td>${ i.store_location}</td>
+			<td>${ i.shelf_location}</td>
+			<td>${ i.date_purchased}</td>
+			<td>${ i.comission_rate}</td>
+		  <td><a href="/manage/edit_serial_inventory/${ i.id}/">Edit</a><a href="/manage/edit_serial_inventory__deactivate/${ i.id}/"> Delete</a></td> 
+		</tr>
+		%endfor
+	</tbody>
+</table>	  
+
+</%block>  

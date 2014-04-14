@@ -1,0 +1,44 @@
+## Mako can find this base file because it's in the settings.py -> MAKO_TEMPLATES_DIRS list
+<%inherit file="base.htm" />
+<%import datetime%>
+
+<%block name="content">
+
+
+<h1> My Current Repairs</h1>
+	
+
+<table class="table table-striped">
+  <thead>
+		<tr>
+		 <th>Repair ID</th>
+		 <th>Repair Item</th>
+		 <th>Status</th>
+		 <th>Issue</th>
+		 <th>Damage Report</th>
+		 <th>Expected Return</th>
+		 <th>Repair Fees</th>
+		 <th>Pay Now</th>
+	 </tr>
+	</thead>
+	<tbody>
+		%for r in repairs:
+		<tr>
+			<td>${ r.id}</td>
+			<td>${ r.repair_item}</td>
+			<td>${ r.status.status}</td>
+			<td>${ r.issue}</td>
+			<td>${ r.damage_report}</td>
+			<td>${ r.expected_return}</td>
+			<td>$${ r.repair_fees}</td>
+			%if r.paid_for == False:
+				<td><a class="btn btn-primary" href="/catalog/view_repairs__add_to_cart/${ r.id}/"><span class="glyphicon glyphicon-shopping-cart"></span> Pay Now!</a></td>
+			%else:
+				<td>Already Paid</td>
+			%endif
+		</tr>
+		%endfor
+	</tbody>
+</table>	  
+
+</%block>  

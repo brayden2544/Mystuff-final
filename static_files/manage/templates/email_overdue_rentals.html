@@ -1,0 +1,30 @@
+## Mako can find this base file because it's in the settings.py -> MAKO_TEMPLATES_DIRS list
+<%inherit file="base.htm" />
+<%import datetime%>
+
+<%block name="content">
+
+<h2>All customers who have completed Repairs have been Emailed</h2>
+
+<h3>List of Customers who have been emailed for their overdue rentals</h3>
+<u><h4>30 Days Overdue</h4></u>
+%for t in thirty:
+	<p>${ t.customer.username} emailed at ${ t.customer.email}</p>
+%endfor
+
+<u><h4>60 Days Overdue</h4></u>
+%for s in sixty:
+	<p>${ s.customer.username} emailed at ${ s.customer.email}</p>
+%endfor
+
+<u><h4>90 Days Overdue</h4></u>
+%for n in ninety:
+	<p>${ n.customer.username} emailed at ${ n.customer.email}</p>
+%endfor
+
+<div class="pull-left">
+	<a class="btn btn-success" href="/manage/rental/">Back to Rentals</a>
+</div>
+
+
+</%block>  

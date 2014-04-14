@@ -1,0 +1,30 @@
+## Mako can find this base file because it's in the settings.py -> MAKO_TEMPLATES_DIRS list
+<%inherit file="base.htm" />
+
+
+<%block name="content">
+
+<h1> Product Categories</h1>
+<br>
+<div id="category_page">
+	<TABLE BORDER="0" cellpadding="0" CELLSPACING="0">
+			
+		  <thead>
+				<tr>
+				%for category in categories:
+				 <th><a href="/catalog/category/${ category.id}"><h3>${ category.category_name}</h3></a></th>
+				%endfor
+			 </tr>
+			</thead>
+			<tbody>
+			<TR>
+			%for category in categories:
+				<TD WIDTH="200" HEIGHT="200" BACKGROUND="/static/catalog/images/category/${ category.category_name}.jpg"> </TD>
+			%endfor
+			</TR>
+		
+			
+		</TABLE>
+		
+</div>
+</%block>  

@@ -1,0 +1,69 @@
+## Mako can find this base file because it's in the settings.py -> MAKO_TEMPLATES_DIRS list
+<%inherit file="base.htm" />
+
+<%block name="content">
+
+<h3>Your Cart</h3>
+
+<TABLE BORDER="0" cellpadding="8" CELLSPACING="2">
+			
+		  <thead>
+				<tr>
+					 <th>Type</th>
+					 <th>Product</th>
+					 <th>Name</th>
+					 <th>Quantity</th>
+					 <th>Options</th>
+					 <th>Price</th>
+				 </tr>
+%if len(cart_items) == 0:
+<div class="row" style="text-align:center">
+    <p><h3>You have no items in your cart. <a href="/catalog/index/" style="color:#3074E2">Find items to purchase here!</a></h3></p>
+</div>
+%endif
+%for i in cart_items:
+		<tr>
+			 <td><h4>Purchase</h4></td>
+       <td><img src="/static/catalog/images/product/thumb/${ i[0].sku}-thumb.jpg"  width="100" height="70"></img></td>
+			 <td><a href="/catalog/product/${ i[0].id}" style="color:#3074E2"><h3>${ i[0].product_name}</h3></a></td>
+       <td><h4 style="display:inline">${ i[1]}</h4>  
+			 <td><a class="btn btn-default" href="/catalog/cart__delete/${ i[0].id}">Delete</a></td></td>	 
+			 <td><h3>$${ i[0].price * i[1]}</h3></td>
+		</tr>
+%endfor
+
+%for r in rental_items:
+		<tr>
+			 <td><h4>Rental</h4></td>
+       <td><img src="/static/catalog/images/product/thumb/${ r[0].sku}-thumb.jpg"  width="100" height="70"></img></td>
+			 <td><a href="/catalog/product/${ r[0].id}" style="color:#3074E2"><h3>${ r[0].product_name}</h3></a></td>
+			 <td></td>
+       <td><a class="btn btn-default" href="/catalog/cart__rental_delete/${ r[0].id}">Delete</a></td>
+			 <td><h3>$${ r[0].daily_rent_rate * r[1]}</h3></td>
+		</tr>
+%endfor
+
+%for a in repair_items:
+		<tr>
+			 <td><h4>Repair</h4></td>
+       <td></td>
+			 <td><h3>${ a[0].repair_item}</h3></a></td>
+			 <td></td>
+       <td><a class="btn btn-default" href="/catalog/cart__repair_delete/${ a[0].id}">Delete</a></td>
+			 <td><h3>$${ a[0].repair_fees}</h3></td>
+		</tr>
+%endfor
+
+		<tr>
+			<td></td>
+			<td></td>
+			<td><h3>Subtotal: </h3></td>
+			<td><h3>$${ subtotal}</h3></td>
+		</tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td><a class="btn btn-danger" href="/catalog/checkout/">Checkout</a></td>
+		</tr>
+</table>
+</%block>

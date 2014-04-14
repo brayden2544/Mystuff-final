@@ -1,0 +1,33 @@
+## Mako can find this base file because it's in the settings.py -> MAKO_TEMPLATES_DIRS list
+<%inherit file="base.htm" />
+
+
+<%block name="content">
+
+
+<h1> Categories</h1>
+<div class="pull-right">
+	<a class="btn btn-success" href="/manage/edit_category__new/">Create New Category</a>
+</div>	
+
+<table class="table table-striped">
+  <thead>
+		<tr>
+		 <th>ID</th>
+		 <th>Category Name</th>
+		 <th>Category Description</th>
+	 </tr>
+	</thead>
+	<tbody>
+		%for c in category:
+		<tr>
+			<td>${ c.id}</td>
+			<td>${ c.category_name}</td>
+			<td>${ c.category_description}</td>
+			<td><a href="/manage/edit_category/${ c.id }/">Edit</a>
+		</tr>
+		%endfor
+	</tbody>
+</table>	  
+
+</%block>  

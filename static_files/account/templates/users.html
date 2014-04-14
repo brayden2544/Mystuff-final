@@ -1,0 +1,97 @@
+## Mako can find this base file because it's in the settings.py -> MAKO_TEMPLATES_DIRS list
+<%inherit file="base_template.htm" />
+
+
+<%block name="content">
+
+
+<h1> ${ title}</h1>
+<div class="pull-right">
+	<a class="btn btn-success" href="/account/edit_user__new/">Create New User</a>
+</div>	
+
+<table class="table table-striped">
+  <thead>
+		<tr>
+		 <th>ID</th>
+		 <th>Username</th>
+		 <th>First Name</th>
+		 <th>Last Name</th>
+		 <th>Email</th>
+		 <th>Address</th>
+		 <th>City</th>
+		 <th>State</th>
+		 <th>Zip</th>
+		 <th>Actions</th>
+	 </tr>
+	</thead>
+	<tbody>
+		%for u in users:
+		<tr>
+			<td>${ u.id}</td> 
+			<td>${ u.username}</td>
+			<td>${ u.first_name}</td>
+		  <td>${ u.last_name}</td>
+			<td>${ u.email}</td>
+			<td>${ u.address}</td>
+			<td>${ u.city}</td>
+			<td>${ u.state}</td>
+			<td>${ u.zip_code}</td>
+			<td><a href="/account/edit_user/${ u.id }/">Edit</a><a href="/account/edit_user__deactivate/${ u.id }/"> Delete</a></td>
+		</tr>
+		%endfor
+	</tbody>
+</table>	  
+
+</%block>  
+
+<%block name="left">
+    <div class="panel-group" id="accordion">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+              <span class="glyphicon glyphicon-shopping-cart"></span> &nbsp Stores 
+            </a>
+          </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse in">
+          <div class="panel-body">
+            <a href="/manage/stores/"><button type="button" class="btn btn-default btn-block">View All Stores</button></a>
+    				<a href="/manage/edit_stores__new/"><button type="button" class="btn btn-default btn-block">Create New Store</button></a>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+              <span class="glyphicon glyphicon-tags"></span> &nbsp Products
+            </a>
+          </h4>
+        </div>
+        <div id="collapseTwo" class="panel-collapse collapse in">
+          <div class="panel-body">
+            <a href="/manage/catalog_items/"><button type="button" class="btn btn-default btn-block">View All Catalog Items</button></a>
+    				<a href="/manage/catalog_items__new/"><button type="button" class="btn btn-default btn-block">Add New Catalog Item</button></a>
+    				<a href="/manage/physical_inventory/"><button type="button" class="btn btn-default btn-block">View Current Inventory</button></a>
+    				<a href="/manage/physical_inventory__new/"><button type="button" class="btn btn-default btn-block">Add New Inventory</button></a>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+              <span class="glyphicon glyphicon-user"></span> &nbsp Users 
+            </a>
+          </h4>
+        </div>
+        <div id="collapseThree" class="panel-collapse collapse in">
+          <div class="panel-body">
+            <a href="/account/users/"><button type="button" class="btn btn-default btn-block">View All Users</button></a> 
+          </div>
+        </div>
+      </div>
+    </div>
+</%block>

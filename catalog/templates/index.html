@@ -1,0 +1,63 @@
+## Mako can find this base file because it's in the settings.py -> MAKO_TEMPLATES_DIRS list
+<%inherit file="base.htm" /> %>
+
+
+<%block name="content">
+<div class="row">
+  <div class="col-xs-12 col-md-12">&nbsp</div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-9">
+      <img class="img-responsive" alt="Meyer Photography" src="/static/catalog/images/digitallife3.png"><br />
+      <div class="table-responsive">
+      <table class="table">
+        <tbody>
+          <tr>
+            <td><a href="/catalog/category/1/"><img class="img-responsive" alt="Professional Cameras" src="/static/catalog/images/cameras.png"></a><br /></td>
+            <td><a href="/catalog/rentable/"><img class="img-responsive" alt="Camera Rentals" src="/static/catalog/images/rentals.png"></a><br /></td>
+            <td><img class="img-responsive" alt="Meyer Photography" src="/static/catalog/images/certifiedrepair.png"><br /></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+      </div>
+      <div class="col-md-3">
+        <div id="carousel" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carousel-example-captions" data-slide-to="1" class="active"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="item active">
+              <img  alt="900x500" src="/static/base_app/images/mystufffinal.png">
+              <div class="carousel-caption">
+                <h6>My Stuff Products</h6>
+              </div>
+            </div>
+            %for p in products:
+            <div class="item">
+              <img  alt="${ p.product_name}" src="/static/catalog/images/product/large/${ p.sku}.jpg">
+              <div class="carousel-caption">
+                <h6>${ p.product_name}</h6>
+              </div>
+            </div>
+            %endfor
+        </div>
+      </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+      <p class="lead" id="shopbybrand">&nbsp&nbspShop by Brand</p>
+      <ul class="list-inline">
+
+        %for b in brands:
+        <li><a href="/catalog/brand/${ b.id}/"><img class="img-thumbnail"src="/static/catalog/images/brand/${ b.brand_name}.jpg" width="140" height="70"></li>
+        %endfor
+       </ul>
+  </div>
+</div>
+
+</%block>  

@@ -1,0 +1,305 @@
+https://docs.djangoproject.com/en/1.6/topics/auth/
+
+def process_request(request):
+    if not request.user.is_authenticated()
+		  return HttpResponseRedirect('/account/login')
+		if not request.user.is_staff and not request.user.is_superuser:
+		  return HttpResponseRedirect('/account/youcannotgohere')
+			
+			
+			
+			
+			
+			
+			
+			
+			
+import decimal, datetime
+
+f = decimal.Decimal(50)   #are exact 
+
+d = datetime
+
+you can use model form search on django
+
+catalog and physical 
+
+dont inherit user and employee (because of Django) what you need is a one to one 
+	The employee should point at the user
+	the user should have an employee class and a 
+	
+YOu can just use spererate classes for physical and catalog inventory
+
+manage-- 
+catlog vie products and purchase shopping cart
+account -- end user account ares
+
+
+def process_request(request):
+  from django.contrib.auth import authenticate
+  user = authenticate(username='john', password='secret')
+                     #Here we will use form.clean data to get data from the login form
+  if user is not None:
+      # the password verified for the user
+      if user.is_active:
+          print("User is valid, active and authenticated")
+      else:
+          print("The password is valid, but the account has been disabled!")
+  else:
+      # the authentication system was unable to verify the username and password
+      print("The username and password were incorrect.")
+			
+			
+JQUERY
+	console.log('hey world');
+	
+	
+	var 1+= 5
+	
+	console.log(i)
+	
+	
+	
+	$('#login_button').css
+	
+	
+$(function() {
+ $('#login_button').on('click', function(evt) {
+ $('#login_button').css('background-color','red');
+ $(#'login_button').animate({padding: '100px',}, 5000)
+ }
+
+});
+			
+			
+Notes For Sprint 2
+
+Apps for projects and the views nessesary
+
+1) manage
+
+2) account - End user account area
+		create
+		info
+		login
+		logout 
+		password
+		
+		Modles.py has user and employee model
+	
+* catalog
+		index
+		category view
+		product view
+		cart
+		checout
+		reciept
+		
+		Moldels   has category, Product(PolmorphicModel), Bulk Product, Serilaized Product, Sale, 
+		
+
+Page with the html code needs the jquery ready 
+
+$(function{
+
+
+
+
+
+}) 
+
+
+AJAX 
+
+Ajax only gets another page down another way 
+
+$(function{
+ $.ajax({
+ 	url:'/catalog/gettime',
+	success: function(data){
+		$('#servertime').html('')
+	},
+ }); //ajax
+}); //click
+
+
+
+Search Function
+
+products = cmod.Products.objects.filter(name='camaera')
+
+Like Query
+products = cmod.Products.objects.filter(name__contains='camaera')
+
+YOu can create a case insensitive by adding another lowercase field in the model
+products = cmod.Products.pbjects.filter(name__contains='camaera'.lower())
+
+
+
+
+For sale you have to do a sale
+
+sale = create_sale(request.user, form.cleaned_data, cart) ** Create its own method in Models file
+
+
+Add this to every class you make
+created = models.DateTimeField(auto_now=True)
+
+For images use src="${ STATIC_URL }/media/images/${ product.imagefile}"
+
+
+Two Model only one with form 
+
+Dynamic setting of attributes - using Javascript
+$('#something').attr("key", 'value');
+$('#something').css("key", 'value');
+
+
+
+Request.session= {
+	'login': userid,
+	
+	
+	'cart': {
+		"5", 25
+		"22", 3
+		},
+	},
+}
+
+for user do a 
+cart = request.session.get('cart', {})
+
+
+
+
+# add to cart
+cart = request.session.get('cart', {})
+pid =str(product.id)
+pid = str(product.id)
+if pid in cart:
+	cart[pid] += quantity
+else cart[pid] = quantity
+
+request session['cart'] = cart
+
+
+
+# Delete from a dictionary
+
+cart= requestio.session.get('cart', {})
+pid: request.urlparams[0]
+if pid in cart:
+	del cart[pid]
+request.sesstion['cart'] = cart
+
+<a class="btn btn-success" href="/catalog/product__add_to_cart/${ product.id}/"><span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart</a>
+
+
+IMport Datetime
+
+now = datetime.datetime.now()
+thirty_day_ago = now - datetime.timedelta(days=30)
+
+How to get the objects between two dates
+cmod.Rental.due_date.objects.filter(duedate__gte=thirty_days_ago, due_date__lte=now).exclude()
+
+Add to User Class
+
+class User
+reset_password_key = models.TextField() 
+reset_password_expiration_date = models.DateTimeField()
+
+
+4 = Totally custome code
+		Google, Facebook
+		When you need speed, Custom Project, ALMOST NEVER DO THIS
+		
+3 = Frameworks
+		Django, Rails, Angular, Yii, CakePHP, .NET, Spring (Java)
+		Model View Controller
+		Used Often Qucik and Custom
+		
+2 = CMS (Content Managemnet System)
+		Wordpress, Joomla, 100's of other projects
+		
+1 = Wix, Squarespace  
+
+
+MBA = #1
+
+
+LDAP AND ACTIVE DIRECOTRY
+
+import ldap3
+conn = ldap3.initialize(server)
+
+
+Log into LDAP 
+
+
+For email Just google the SEND EMAIL THOUGH DJANGO  
+USe the django doc
+
+
+#email the reciept
+subject, from_email, to 'hello', 'from@example.com' 'to@example.com'
+text_content = templater.render(request, 'email_reciept_text.html' template_vars)
+html_content = templater.render(request, 'email_reciept_email.html' template_vars)
+
+4= dedicated server from hosting
+5= SElf hosted
+
+Python REST client
+python requests __> google
+install this 
+
+docs.python-requests.org/en/latest
+
+Go to the More complicated posts --> Link
+
+Browser --> Apache --> mod_wsgi --> python Django --> database
+Browser --> nginx --> mod_wsgi --> python Django --> database
+
+Alias /static/ c:/__/__/
+
+
+"He likes to use uwsgi instead of mod_wsgi"
+
+
+Go to Deploying Django --> Django Documnentation
+https://docs.djangoproject.com/en/dev/howto/deployment/wsgi/modwsgi/
+
+BEtter -->> only for not windows
+https://docs.djangoproject.com/en/dev/howto/deployment/wsgi/uwsgi/
+
+
+
+class Rental_Return(models.Model):
+     rental = models.ForeignKey(Rental)
+     date_returned = models.DateTimeField(blank=True, null=True)
+     post_condition = models.CharField(max_length=200, blank=True, null=True)
+     total_fees = models.DecimalField(max_digits=6, decimal_places=2, blank=True, null=True)
+
+class Late_Rental(models.Model):
+     rental = models.ForeignKey(Rental)
+     days_late = models.DecimalField(max_digits=6, decimal_places=2, blank=True, null=True)   
+     late_fees = models.DecimalField(max_digits=6, decimal_places=2, blank=True, null=True)   
+     
+class Damaged_Return(models.Model):
+     rental = models.ForeignKey(Rental)
+     damage_report = models.CharField(max_length=200, blank=True, null=True)
+     damage_fees = models.DecimalField(max_digits=6, decimal_places=2, blank=True, null=True)  
+		 
+http://digitallifemyway.com/
+http://meyer
+
+%for r in repairs:
+	<p>${ r.customer.username} emailed at ${ r.customer.email}</p>
+%endfor
+
+
+    		 str('<h3>Hello') +  r.customer.first_name + str(' ,</h3> <p>Your Repair for your ') +  r.repair_item + str('is ready for pickup.<br />To pickup and pay for your repair please bring this pickup ticket with you.</p>') 
+	       + str('<u><h3>Pickup Ticket</h3></u> <p>Repair Ticket:') + r.id +str('</p>')
+
+message_body = '<h3>Hello' + r.customer.first_name + ' ,</h3> <p>Your Repair for your ' + r.repair_item + 'is ready for pickup.<br />To pickup and pay for your repair please bring this pickup ticket with you.</p><u><h3>Pickup Ticket</h3></u> <p>Repair Ticket:' + r.id +'</p>'

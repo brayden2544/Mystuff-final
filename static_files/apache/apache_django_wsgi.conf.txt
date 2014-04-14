@@ -1,0 +1,17 @@
+#Alias /images/ "d:/projects/mysite/templates/images/"
+#<Directory "d:/projects/mysite/images>
+#Order allow,deny
+#Allow from all
+#</Directory>
+
+WSGIScriptAlias / "C:/app/mysite/apache/django.wsgi"
+
+<Directory "C:/app/mysite/apache">
+Allow from all
+</Directory>
+
+<VirtualHost *:80>
+    DocumentRoot C:/app/mysite
+    ServerName 127.0.0.1
+
+</VirtualHost>

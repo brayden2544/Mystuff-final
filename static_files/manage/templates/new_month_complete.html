@@ -1,0 +1,17 @@
+## Mako can find this base file because it's in the settings.py -> MAKO_TEMPLATES_DIRS list
+<%inherit file="base.htm" />
+
+
+<%block name="content">
+
+
+<h1> New Month Creation Complete</h1><br>
+<h2> New Accounts have been created for ${ month} ${ year}</h2><br>
+
+<u><h2>Summary<h2></u>
+<h3>Revenue Account ${ month} ${ year}: $0<h3>
+<h3>Comissions Expense ${ month} ${ year}: $0<h3>
+<h3>Sales Tax Payable ${ month} ${ year}: $0<h3>
+  
+
+</%block>  

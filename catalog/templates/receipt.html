@@ -1,0 +1,18 @@
+## Mako can find this base file because it's in the settings.py -> MAKO_TEMPLATES_DIRS list
+<%inherit file="base.htm" />
+
+<%block name="content">
+<div class="row" style="text-align:center">
+    <h4>Purchase Confirmed</h4>
+
+    <h2>Your purchase has been submitted successfully!</h2>
+    <h3>We have sent a copy of this reciept to your email</h3><br />
+		
+</div>
+		<u><h2>Please print this reciept for your records</h2></u>
+		<h4>Confirmation ID: ${ id}</h4>
+		<h4>Purchase Amount: $${ amount}</h4>
+		<h4>Purchase Description ${ description}</h4>
+
+
+</%block>

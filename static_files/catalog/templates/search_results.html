@@ -1,0 +1,39 @@
+## Mako can find this base file because it's in the settings.py -> MAKO_TEMPLATES_DIRS list
+<%inherit file="base.htm" />
+
+
+<%block name="content">
+
+<div class="row">
+  <a class="btn btn-default" href="/catalog/search/"><span class="glyphicon glyphicon-chevron-left"></span> Back To Search</a>
+</div>
+<h1> Search Results for ${ search}</h1>
+<p>___________________________________________________________________________________________________________________________</p>
+<div id="category_list_page">
+	%if products.count() > 0:
+		%for p in products:
+			<div class="row">
+			  <div class="col-md-2">
+					<a href="/catalog/product/${ p.sku}/"><img src="/static/catalog/images/product/thumb/${ p.sku}-thumb.jpg" alt="" class="img-thumbnail"></a>
+				</div>
+			  <div class="col-md-8">
+					<a href="/catalog/product/${ p.sku}"><h3>${ p.product_name}</h3></a></br>
+					<strong>SKU: ${ p.sku} </br> Brand: ${ p.brand}</strong>
+				</div>
+			  <div class="col-md-2">
+					<h3>$${ p.price}</h3>
+			  	<a class="btn btn-primary" href="/catalog/product/${ p.sku}">View Product Details</a>
+					<a class="btn btn-success" href="/manage/Setup_Default_Store/"><span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart</a>
+				
+			  </div>
+			</div>
+			<p>___________________________________________________________________________________________________________________________</p>
+		%endfor
+	%else:
+		<h2>Sorry there were no results matching your search.</h2>
+	%endif
+</div>
+
+
+
+</%block>  

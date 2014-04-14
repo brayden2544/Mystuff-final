@@ -1,0 +1,39 @@
+## Mako can find this base file because it's in the settings.py -> MAKO_TEMPLATES_DIRS list
+<%inherit file="base.htm" />
+<%import datetime%>
+
+<%block name="content">
+
+
+<h1> Total Rental Return Fees</h1>
+<h4>Customer: ${ rental.customer.first_name} ${ rental.customer.last_name}</h4>
+<h4>Day Rented: ${ rental.date_out}</h4>
+<h4>Expected Return: ${ rental.expected_return}</h4>
+<h4>Date Returned: ${ rental.date_returned}</h4><br>
+
+
+	
+
+<table class="table table-striped">
+  <thead>
+		<tr>
+		 <th>Fee Type</th>
+		 <th>Fee</th>
+		 <th>Reason</th>
+	 </tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Late Fees</td>
+			<td>${ rental.late_fees}</td>
+			<td>The Rental was returned ${ rental.total_days_late} days late</td>
+		</tr>
+		<tr>
+			<td>Damage Fee Fees</td>
+			<td>${ rental.damage_fees}</td>
+			<td>${ rental.damage_report}
+		</tr>
+	</tbody>
+</table>	  
+
+</%block>  

@@ -1,0 +1,24 @@
+## Mako can find this base file because it's in the settings.py -> MAKO_TEMPLATES_DIRS list
+<%inherit file="base.htm" />
+<%import datetime%>
+
+<%block name="content">
+
+
+<h1> Update Repair Status</h1>
+<h3>${ customer.first_name} ${ customer.last_name}</h3>
+<h4>Repair ID:${ repair.id}</h4>
+<h4>Date Checked In: ${ repair.date_in}</h4>
+<h4>Expected Return: ${ repair.expected_return}</h4><br />
+<div class="row" style="text-align:center">
+    <form method="POST">
+        <table>
+            <tbody>
+                ${ form}
+            </tbody>
+        </table>
+        <input class="btn btn-success" type="submit" value="Update Status" />
+    </form>
+</div>  
+
+</%block>  

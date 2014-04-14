@@ -1,0 +1,28 @@
+## Mako can find this base file because it's in the settings.py -> MAKO_TEMPLATES_DIRS list
+<%inherit file="base_template.htm" />
+
+
+<%block name="content">
+
+
+<h1> My Account</h1>
+	
+<br>
+<div id="account_page">
+	<div id="class="col-md-4"></div>
+	<div id="class="col-md-1"></div>
+	  <div id="account_info" class="col-md-6">
+				<strong>Username: ${ user.username}</strong></br>
+				<strong>First Name: ${ user.first_name}</strong></br>
+			  <strong>Last Name: ${ user.last_name}</strong></br>
+				<strong>Email: ${ user.email}</strong></br>
+				<strong>Address: ${ user.address}</strong></br>
+				<strong>City: ${ user.city}</strong></br>
+				<strong>State: ${ user.state}</strong></br>
+				<strong>ZIP: ${ user.zip_code}</strong></br>
+	  </div>
+	<div id="class="col-md-1"></div>
+</div>
+
+</%block>  
+
